@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjouvkql70r12"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0w6vf"]
+[ext_resource type="Texture2D" uid="uid://bvhdi282hctct" path="res://assets/players/c1left/1.png" id="1_8645o"]
+[ext_resource type="Texture2D" uid="uid://crxexr6xnoxyn" path="res://assets/players/c1right/1.png" id="2_kb1at"]
+[ext_resource type="Texture2D" uid="uid://c7w25rpun727s" path="res://assets/players/c1left/2.png" id="3_drlqh"]
+[ext_resource type="Texture2D" uid="uid://ctxemrpscuovk" path="res://assets/players/c1left/3.png" id="4_qtevq"]
+[ext_resource type="Texture2D" uid="uid://n142q43ulpuv" path="res://assets/players/c1right/2.png" id="5_e8ant"]
+[ext_resource type="Texture2D" uid="uid://dvhqv40u1eh7" path="res://assets/players/c1right/3.png" id="6_5h4fm"]
+[ext_resource type="PackedScene" uid="uid://eihq0rv4r7nv" path="res://scenes/components/gravity_component.tscn" id="8_rov7n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_si4ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8645o")
+}],
+"loop": true,
+"name": &"idleL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kb1at")
+}],
+"loop": true,
+"name": &"idleR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_drlqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qtevq")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_e8ant")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5h4fm")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r8hyx"]
+radius = 3.0
+height = 8.0
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("GravityComponent")]
+script = ExtResource("1_0w6vf")
+GravityComponent = NodePath("GravityComponent")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -0.5)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_si4ey")
+animation = &"idleR"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_r8hyx")
+
+[node name="GravityComponent" parent="." instance=ExtResource("8_rov7n")]
