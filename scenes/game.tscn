@@ -1,19 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccevj4312vdkn"]
+[gd_scene load_steps=3 format=3 uid="uid://ccevj4312vdkn"]
 
 [ext_resource type="PackedScene" uid="uid://bbtigx5ry2rax" path="res://scenes/planet_1.tscn" id="1_8yof2"]
-[ext_resource type="Texture2D" uid="uid://dktw2gfcgtppa" path="res://assets/background/planet1.png" id="1_hnsdn"]
 [ext_resource type="PackedScene" uid="uid://bjouvkql70r12" path="res://scenes/player/player.tscn" id="2_w2j0l"]
 
 [node name="game" type="Node2D"]
 
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(178, -99)
-texture = ExtResource("1_hnsdn")
-
 [node name="planet1" parent="." instance=ExtResource("1_8yof2")]
-position = Vector2(0, 1)
 
 [node name="player" parent="." instance=ExtResource("2_w2j0l")]
-position = Vector2(35, -97)
+position = Vector2(33, -107)
 
 [node name="Camera2D" type="Camera2D" parent="player"]

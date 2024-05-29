@@ -1,4 +1,4 @@
-class_name gravity_component
+class_name GravityComponent
 extends Node
 
 @export_subgroup("settings")
